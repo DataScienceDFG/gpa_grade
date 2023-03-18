@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Credit Calculator</title>
+    <link rel='shortcut icon'
+        href='https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/17089548147/fav_icon/UzsiCmhf3A-50MyX9iw_jsDZjXmgbmKicA.png' />
+
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <a href="https://sites.google.com/a/dataflowgroup.com/home-page/home" target="_blank">
+            <img src="images\Dataflow.png" style="width:200px;height:70px">
+        </a>
+    </head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class='heading'>Credit Calculator</h1>
+            </div>
+        </div>
+        
+	<label style='margin-left: 150px' for="percentage">Percentage Grade: </label>
+	<input type="number" id="percentage" name="Percentage Grade" min="0" value="0">
+
+	<label style='margin-left: 20px' for="letter">Letter Grade: </label>
+	<input  id="grade" name="Letter Grade" min="0" value="0">
+
+	<label style='margin-left: 20px' for="gpa">4.0 GPA Scale: </label>
+	<input type="letter" id="gpa" name="4.0 GPA Scale" min="0" value="0">
+
+	<script>
+		// Get references to the input fields
+		var percentageInput = document.getElementById('percentage');
+		var gradeInput = document.getElementById('grade');
+		var gpaInput = document.getElementById('gpa');
+
+		// Listen for changes to the semester input
+		percentageInput.addEventListener('input', function() {
+			// Calculate the equivalent quarter value
+			var percentageValue = parseInt(percentageInput.value);
+			var gpaValue;
+			var gradeValue;
+			if (percentageValue >= 97 && percentageValue <= 100) {
+				gradeValue = "A+";
+				gpaValue = 4.0;
+			} else {
+				// If the percentage is not between 90 and 100, calculate the grade and GPA values based on a standard conversion
+				if (percentageValue >= 93 && percentageValue < 97) {
+					gradeValue = "A";
+					gpaValue = 4.0;
+				} else if (percentageValue >= 90 && percentageValue < 93) {
+					gradeValue = "A-";
+					gpaValue = 3.7;
+				} else if (percentageValue >= 87 && percentageValue < 90) {
+					gradeValue = "B+";
+					gpaValue = 3.3;
+				} else if (percentageValue >= 83 && percentageValue < 87) {
+					gradeValue = "B";
+					gpaValue = 3.0;
+				} else if (percentageValue >= 80 && percentageValue < 83) {
+					gradeValue = "B-";
+					gpaValue = 2.7;
+				} else if (percentageValue >= 77 && percentageValue < 80) {
+					gradeValue = "C+";
+					gpaValue = 2.3;
+				} else if (percentageValue >= 73 && percentageValue < 77) {
+					gradeValue = "C";
+					gpaValue = 2.0;
+				} else if (percentageValue >= 70 && percentageValue < 73) {
+					gradeValue = "C-";
+					gpaValue = 1.7;
+				} else if (percentageValue >= 67 && percentageValue < 70) {
+					gradeValue = "D+";
+					gpaValue = 1.3;
+				} else if (percentageValue >= 65 && percentageValue < 67) {
+					gradeValue = "D";
+					gpaValue = 1.0;
+				} else {
+					gradeValue = "F";
+					gpaValue = 0.0;
+				}
+			}
+
+			// Update the grade and GPA input fields with the calculated values
+			gradeInput.value = gradeValue;
+			gpaInput.value = gpaValue;
+		});
+
+	</script>
+    </div>
+</body>
+</html>
